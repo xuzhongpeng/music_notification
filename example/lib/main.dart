@@ -1,8 +1,12 @@
+import 'dart:typed_data';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:flutter/services.dart';
 import 'package:music_notification/music_notification.dart';
+import 'package:dio/dio.dart';
 
 void main() => runApp(MyApp());
 
@@ -52,11 +56,37 @@ class _MyAppState extends State<MyApp> {
             child: Text('Running on: $_platformVersion\n'),
           ),
           Container(
+            width: 80,
+            color: Colors.blue,
+            height: 40,
             child: GestureDetector(
                 child: Text("点击"),
-                onTap: () {
+                onTap: () async {
                   print('yeyeye**************');
-                  MusicNotification.platformVersion();
+                  Response res = await Dio().get(
+                      "http://p1.music.126.net/t27-G71EOXTl1HTbveeC9A==/109951164554706909.jpg?param=300y300",
+                      options: Options(responseType: ResponseType.stream));
+                  Uint8List list =
+                      await consolidateHttpClientResponseBytes(res.data.stream);
+                  MusicNotification.start(NotifiParams(
+                      imgUrl: list, singer: "周杰伦", musicName: "听妈妈的话"));
+                }),
+          ),
+          Container(
+            width: 80,
+            color: Colors.blue,
+            height: 40,
+            child: GestureDetector(
+                child: Text("点击"),
+                onTap: () async {
+                  print('yeyeye**************');
+                  Response res = await Dio().get(
+                      "http://y.gtimg.cn/music/photo_new/T002R150x150M000001hR4Tj4WnsKV.jpg?n=1?param=200y200",
+                      options: Options(responseType: ResponseType.stream));
+                  Uint8List list =
+                      await consolidateHttpClientResponseBytes(res.data.stream);
+                  MusicNotification.start(NotifiParams(
+                      imgUrl: list, singer: "林俊杰", musicName: "江南"));
                 }),
           )
         ]),

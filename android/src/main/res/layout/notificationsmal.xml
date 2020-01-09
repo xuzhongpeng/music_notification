@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    tools:ignore="MissingDefaultResource">
+    <!--    头像-->
+    <ImageView
+        android:id="@+id/notificationImageView"
+        android:layout_width="66dp"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@raw/music" />
+
+    <!--    歌及歌手-->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_widthPercent="40%">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_widthPercent="50%">
+
+            <TextView
+                android:id="@+id/musicName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="夜曲"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/singer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="周杰伦"
+                android:textColor="#ccc" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--        按钮组-->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_widthPercent="40%">
+
+        <Button
+            android:id="@+id/play1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+            android:background="@raw/stop" />
+
+        <Button
+            android:id="@+id/next1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="15dp"
+            android:background="@raw/next" />
+    </LinearLayout>
+</LinearLayout>
