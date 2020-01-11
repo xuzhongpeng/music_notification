@@ -22,6 +22,15 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     initPlatformState();
+    MusicNotification.lastStream.listen((_) {
+      print("****上一首");
+    });
+    MusicNotification.nextStream.listen((_) {
+      print("****下一首");
+    });
+    MusicNotification.stateChangeStream.listen((_) {
+      print("****播放" + _.toString());
+    });
   }
 
   // Platform messages are asynchronous, so we initialize in an async method.
