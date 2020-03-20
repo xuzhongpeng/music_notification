@@ -78,7 +78,10 @@ class _MyAppState extends State<MyApp> {
                   Uint8List list =
                       await consolidateHttpClientResponseBytes(res.data.stream);
                   MusicNotification.start(NotifiParams(
-                      imgUrl: list, singer: "周杰伦", musicName: "听妈妈的话"));
+                      imgUrl: list,
+                      singer: "周杰伦",
+                      musicName: "听妈妈的话",
+                      isPlaying: true));
                 }),
           ),
           Container(
@@ -95,7 +98,10 @@ class _MyAppState extends State<MyApp> {
                   Uint8List list =
                       await consolidateHttpClientResponseBytes(res.data.stream);
                   MusicNotification.start(NotifiParams(
-                      imgUrl: list, singer: "林俊杰", musicName: "江南"));
+                      imgUrl: list,
+                      singer: "林俊杰",
+                      musicName: "江南",
+                      isPlaying: false));
                 }),
           )
         ]),

@@ -25,7 +25,6 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String action = intent.getAction();
-        String toastStr = "你点击了";
         if (action.equals(ACTION_1)) {
             System.out.println("上一首");
             channel.invokeMethod("last",new HashMap<>());

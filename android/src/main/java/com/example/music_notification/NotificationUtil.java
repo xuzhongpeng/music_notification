@@ -16,6 +16,8 @@ import android.os.Message;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 
+//import androidx.core.app.NotificationCompat;
+
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -40,7 +42,7 @@ public class NotificationUtil {
         byte[] imgUrl = params.argument("imgUrl");
         String musicName = params.argument("musicName").toString();
         String singer = params.argument("singer").toString();
-        Bool isPlaying = params.argument("isPlaying");
+        Boolean isPlaying = params.argument("isPlaying");
         // big
         Intent button1I = new Intent(MyBroadcastReceiver.ACTION_1);
         PendingIntent button1PI = PendingIntent.getBroadcast(context, 0, button1I, 0);
@@ -54,6 +56,7 @@ public class NotificationUtil {
         remoteViews.setOnClickPendingIntent(R.id.next, button2PI);
         remoteViews.setOnClickPendingIntent(R.id.play, button3PI);
 
+        //设置动态数据
         Bitmap bitmap = BitmapFactory.decodeByteArray(imgUrl, 0, imgUrl.length);
         remoteViews.setImageViewBitmap(R.id.notificationImageView, bitmap);
         remoteViews.setTextViewText(R.id.musicName, musicName);
@@ -69,6 +72,13 @@ public class NotificationUtil {
         sremoteViews.setImageViewBitmap(R.id.notificationImageView, bitmap);
         sremoteViews.setTextViewText(R.id.musicName, musicName);
         sremoteViews.setTextViewText(R.id.singer, singer);
+        if(isPlaying){
+            remoteViews.setInt(R.id.play,"setBackgroundResource",R.raw.stop);
+            sremoteViews.setInt(R.id.play1,"setBackgroundResource",R.raw.stop);
+        }else{
+            remoteViews.setInt(R.id.play,"setBackgroundResource",R.raw.play);
+            sremoteViews.setInt(R.id.play1,"setBackgroundResource",R.raw.play);
+        }
 
         Intent sbutton3I = new Intent(MyBroadcastReceiver.ACTION_3);
         PendingIntent sbutton3PI = PendingIntent.getBroadcast(context, 0, sbutton3I, 0);
